@@ -7,3 +7,9 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 teams = Team.create([{ name: "Dolphins", hq: "Brooklyn"}, { name: "Sharks", hq: "Queens"}, { name: "Sailfish", hq: "Manhattan"}])
+swimmers = Swimmer.create([{ name: "Diane Houston", email: "dh@gmail.com", password: "password", team_id: "1"},
+  { name: "Billy Bob", email: "bb@gmail.com", password: "password", team_id: "1"},
+  { name: "Bobby Sue", email: "bs@gmail.com", password: "password", team_id: "2"},
+  { name: "James Dean", email: "jd@gmail.com", password: "password", team_id: "2"},
+  { name: "Walter Payton", email: "wp@gmail.com", password: "password", team_id: "3"},
+])
