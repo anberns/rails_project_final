@@ -19,14 +19,23 @@ class CoachesController < ApplicationController
 
   def show
     @coach = Coach.find(params[:id])
+    if !authenticate_user(@coach.id)
+      return head(:forbidden) 
+    end
   end
 
   def edit
     @coach = Coach.find(params[:id])
+    if !authenticate_user(@coach.id)
+      return head(:forbidden) 
+    end
   end
 
   def update
     @coach = Coach.find(params[:id])
+    if !authenticate_user(@coach.id)
+      return head(:forbidden) 
+    end
     @coach.update(coach_params)
     redirect_to coach_path(@coach.id)
   end
@@ -38,8 +47,12 @@ class CoachesController < ApplicationController
         :name,
         :password,
         :email,
-        :team_id,
+        :team_id
       )
+    end
+
+    def authenticate_user(id)
+      id == session[:user_id]
     end
 
     def require_login 

@@ -24,5 +24,11 @@ class SessionsController < ApplicationController
     session.delete :user_type
     redirect_to '/'
   end
+
+  private
+
+  def auth
+    request.env['omniauth.auth']
+  end
   
 end
