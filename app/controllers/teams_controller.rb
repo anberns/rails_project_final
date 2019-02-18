@@ -1,4 +1,9 @@
 class TeamsController < ApplicationController
+  before_action :require_login
+
+  def index
+    @teams = Team.all 
+  end
 
   def show
     @team = Team.find(params[:id])
@@ -8,6 +13,10 @@ class TeamsController < ApplicationController
   end
 
   private
+
+  def require_login 
+    return head(:forbidden) unless session.include? :user_id 
+  end
 
   def authorized?(team)
     ids = []

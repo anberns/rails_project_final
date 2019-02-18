@@ -1,0 +1,8 @@
+<% @teams.each do |team| %>
+  <h1><%= team.name %> - <%= team.hq %></h1>
+  <h3>Coaches</h3>
+  <% team.coaches.each do |coach| %>
+    <p><%= coach.name %> - <%= coach.email %></p>
+  <% end %>
+  <br>
+<% end %>

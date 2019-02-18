@@ -1,7 +1,8 @@
 <h1>coach#show/id</h1>
 <%= @coach.name %><br>
 <%= @coach.team.name %><br>
-<%= link_to "View Roster", team_path(@coach.team.id) %><br>
+<%= link_to "View Team", team_path(@coach.team.id) %><br>
+<%= link_to "View All Teams", teams_path %><br>
 <%= link_to "Update Information", edit_coach_path(@coach.id) %><br>
 <%= form_tag logout_path do %>
   <%= submit_tag "Log Out" %>
