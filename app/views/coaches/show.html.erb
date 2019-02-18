@@ -1,2 +1,4 @@
 <h1>coach#show/id</h1>
-<%= @coach.name %>
+<%= @coach.name %><br>
+<%= @coach.team.name %><br>
+<%= link_to "Update Information", edit_coach_path(@coach.id) %><br>

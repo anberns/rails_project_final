@@ -5,12 +5,27 @@ class CoachesController < ApplicationController
   end
 
   def create 
-    @coach = Coach.create(coach_params)
-    redirect_to coach_path(@coach.id)
+    @coach = Coach.new(coach_params)
+    if @coach.valid?
+      @coach.save
+      redirect_to coach_path(@coach.id)
+    else
+      render :new
+    end
   end
 
   def show
     @coach = Coach.find(params[:id])
+  end
+
+  def edit
+    @coach = Coach.find(params[:id])
+  end
+
+  def update
+    @coach = Coach.find(params[:id])
+    @coach.update(coach_params)
+    redirect_to coach_path(@coach.id)
   end
 
   private

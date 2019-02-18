@@ -1,0 +1,19 @@
+<%= form_for @coach do |f| %>
+
+  <!-- coach info -->
+  <%= f.label :name %><br>
+  <%= f.text_field :name %><br>
+
+  <%= f.label :email %><br>
+  <%= f.text_field :email %><br>
+
+  <%= f.label :password %><br>
+  <%= f.text_field :password %><br>
+  
+  <!-- choose a team (add create option) -->
+  <%= f.label :Team %><br>
+  <%= f.collection_select :team_id, Team.all, :id, :name %><br><br>
+
+
+  <%= f.submit value="Create Account" %>
+<% end %>

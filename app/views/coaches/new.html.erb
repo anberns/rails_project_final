@@ -1,20 +1,17 @@
 <h1>coach/new</h1>
-
-<%= form_for @coach do |f| %>
-
-  <!-- coach info -->
-  <%= f.label :name %><br>
-  <%= f.text_field :name %><br>
-
-  <%= f.label :email %><br>
-  <%= f.text_field :email %><br>
-
-  <%= f.label :password %><br>
-  <%= f.text_field :password %><br>
-  
-  <!-- choose a team (add create option) -->
-  <%= f.collection_select :team_id, Team.all, :id, :name %>
-
-
-  <%= f.submit %>
+<% if @coach.errors.any? %>
+  <div id="error_explanation">
+    <h2>
+      <%= pluralize(@coach.errors.count, "error") %>
+      prohibited this account from being created:
+    </h2>
+ 
+    <ul>
+    <% @coach.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
 <% end %>
+
+<%= render 'form' %>
