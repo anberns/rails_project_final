@@ -6,4 +6,4 @@ rails g resource Swimmer name:string password_digest:string email:string --no-te
 
 rails g resource Event name:string qualifying_time:time --no-test-framework 
 
-rails g migration create_swimmers_events swimmer_id:integer event_id:integer --no-test-framework
+rails g migration create_swimmer_events swimmer_id:integer event_id:integer --no-test-framework
