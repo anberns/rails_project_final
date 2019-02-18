@@ -22,8 +22,8 @@ ActiveRecord::Schema.define(version: 2019_02_18_153900) do
   end
 
   create_table "events", force: :cascade do |t|
-    t.string "name"
-    t.time "qualifying_time"
+    t.integer "distance"
+    t.string "stroke"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 2019_02_18_153900) do
   create_table "swimmer_events", force: :cascade do |t|
     t.integer "swimmer_id"
     t.integer "event_id"
+    t.time "best_time"
   end
 
   create_table "swimmers", force: :cascade do |t|
