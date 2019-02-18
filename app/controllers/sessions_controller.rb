@@ -15,7 +15,7 @@ class SessionsController < ApplicationController
       return head(:forbidden) unless swimmer.authenticate(params[:password])
       session[:user_id] = swimmer.id 
       session[:user_type] = "swimmer"
-      redirect_to swimmers_path(swimmer.id)
+      redirect_to swimmer_path(swimmer.id)
     end
   end
 

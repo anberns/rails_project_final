@@ -11,6 +11,8 @@ class CoachesController < ApplicationController
     @coach = Coach.new(coach_params)
     if @coach.valid?
       @coach.save
+      session[:user_id] = @coach.id
+      session[:user_type] = "coach"
       redirect_to coach_path(@coach.id)
     else
       render :new
