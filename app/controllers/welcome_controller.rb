@@ -1,3 +1,6 @@
-class WelcomeController < ApplicationRecord
+class WelcomeController < ApplicationController
+
+  def home
+  end
 
 end
