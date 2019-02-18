@@ -1,4 +1,5 @@
 <h1>coach/new</h1>
+<h1>Sign Up</h1>
 <% if @coach.errors.any? %>
   <div id="error_explanation">
     <h2>
@@ -15,3 +16,16 @@
 <% end %>
 
 <%= render 'form' %>
+
+<br><br>
+<h1>Log In</h1>
+<%= form_tag login_path do %>
+  <label>Email:</label><br>
+  <input type="text" id="email" name="email"><br>
+  <label>Password:</label><br>
+  <input type="password" id="password" name="password"><br>
+
+  <input type="hidden" name="user_type" value="coach">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <input type="submit" value="Log In">
+<% end %>

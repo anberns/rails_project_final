@@ -2,3 +2,6 @@
 <%= @coach.name %><br>
 <%= @coach.team.name %><br>
 <%= link_to "Update Information", edit_coach_path(@coach.id) %><br>
+<%= form_tag logout_path do %>
+  <%= submit_tag "Log Out" %>
+<% end %>
