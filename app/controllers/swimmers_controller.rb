@@ -3,6 +3,9 @@ class SwimmersController < ApplicationController
   skip_before_action :require_login, only: [:new, :create]
 
   def new
+    if session[:user_id]
+      redirect_to swimmer_path(session[:user_id])
+    end
     @swimmer = Swimmer.new 
   end
 

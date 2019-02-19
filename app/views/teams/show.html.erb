@@ -1,9 +1,6 @@
 <h1><%= @team.name %></h1>
 <h2><%= @team.hq %></h2><br>
-<h3>Coaches</h3>
-<% @team.coaches.each do |coach| %>
-  <p><%= coach.name %> - <%= coach.email %></p>
-<% end %>
+
 <br>
 <h3>Swimmers</h3>
 <% @team.swimmers.each do |swimmer| %>
