@@ -39,7 +39,11 @@ class CoachesController < ApplicationController
       return head(:forbidden) 
     end
     @coach.update(coach_params)
-    redirect_to coach_path(@coach.id)
+    if @coach.valid?
+      redirect_to coach_path(@coach.id)
+    else
+      render :edit
+    end
   end
 
   private
