@@ -5,6 +5,7 @@ class Swimmer < ApplicationRecord
   has_many :swimmer_events
   has_many :events, through: :swimmer_events, dependent: :destroy
   accepts_nested_attributes_for :events
+
   def events_attributes=(events_attributes)
     puts events_attributes
     events_attributes.values.each do |event_attribute|
@@ -12,6 +13,13 @@ class Swimmer < ApplicationRecord
         event = Event.find_or_create_by(event_attribute)
         self.events << event
       end
+    end
+  end
+
+  def self.find_or_create_by_omniauth(auth)
+    oauth_email = auth["info"]["email"]
+    self.where(:email => oauth_email).first_or_create do |swimmer|
+      swimmer.password = SecureRandom.hex
     end
   end
 
