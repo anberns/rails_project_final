@@ -1,0 +1,14 @@
+
+<%= form_for @event do |f| %>
+
+  <%= f.label "Name"%><br>
+  <%= f.text_field :name %><br>
+
+  <%= f.label "Distance" %><br>
+  <%= f.text_field :distance %><br>
+
+  <%= f.label "Stroke" %><br>
+  <%= f.password_field :stroke %><br>
+  
+  <%= f.submit value="Submit" %>
+<% end %>
