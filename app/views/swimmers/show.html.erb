@@ -1,14 +1,10 @@
-<h1>swimmer#show/id</h1>
-<%= @swimmer.name %><br>
-<%= @swimmer.team.name %><br><br>
+<h1><%= @swimmer.name %></h1><br>
+<h3>My Team: <%= @swimmer.team.name %></h3>
+<% @swimmer.team.swimmers.each do |swimmer| %>
+  <p><%= swimmer.name %> - <%= swimmer.email %></p>
+<% end %>
+<br>
+<h3>My Events</h3>
 <% @swimmer.events.each do |event|%>
   <%= event.name %><br>
 <% end %><br>
-
-<%= link_to "My Team", team_path(@swimmer.team.id) %><br>
-<%= link_to "All Teams", teams_path %><br>
-<%= link_to "All Events", events_path %><br>
-<%= link_to "Update Information", edit_swimmer_path(@swimmer.id) %><br>
-<%= form_tag logout_path do %>
-  <%= submit_tag "Log Out" %>
-<% end %>
