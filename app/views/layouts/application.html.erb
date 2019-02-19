@@ -27,7 +27,12 @@
             <a class="nav-link" href="/teams">Teams</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link disabled" href="/logout">Log Out</a>
+            <a class="nav-link" <%= link_to "My Account", edit_swimmer_path(current_swimmer.id) %>
+          </li>
+          <li class="nav-item">
+             <%= form_tag logout_path, method: 'post' do %>
+              <button class="btn btn-link nav-link" type="submit">Log Out</button>
+            <% end %>
           </li>
         <% else %>
           <li class="nav-item active">
