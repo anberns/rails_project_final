@@ -1,0 +1,10 @@
+<%= form_tag login_path do %>
+  <label>Email:</label><br>
+  <input type="text" id="email" name="email"><br>
+  <label>Password:</label><br>
+  <input type="password" id="password" name="password"><br>
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <input type="submit" value="Log In">
+<% end %>
+<br>
+<!-- <%= link_to('Log in with Facebook!', '/auth/facebook') %> -->
