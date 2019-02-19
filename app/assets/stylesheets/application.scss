@@ -13,10 +13,7 @@
  *= require_tree .
  *= require_self
  */
-
- body.swim {
-  background: url(<%= asset_path('pool.jpg') %>);
-}
+ @import 'bootstrap';
 
  .banner {
    width: 80%;
