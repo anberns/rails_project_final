@@ -1,6 +1,10 @@
 class Swimmer < ApplicationRecord
   has_secure_password
 
+  validates :name, presence: true 
+  validates :email, presence: true, uniqueness: true
+  validates :password, presence: true
+
   belongs_to :team
   has_many :swimmer_events
   has_many :events, through: :swimmer_events, dependent: :destroy
@@ -17,10 +21,16 @@ class Swimmer < ApplicationRecord
   end
 
   def self.find_or_create_by_omniauth(auth)
-    oauth_email = auth["info"]["email"]
-    self.where(:email => oauth_email).first_or_create do |swimmer|
-      swimmer.password = SecureRandom.hex
+    oauth_name = auth["info"]["name"]
+    oauth_email = auth["info"]["email"] 
+    @swimmer = self.find_by(email: oauth_email)
+    if !@swimmer 
+      @swimmer = self.new(name: oauth_name, email: oauth_email, password: "password", team_id: "1")
+      if @swimmer.valid?
+        @swimmer.save
+      end
     end
+    @swimmer
   end
 
 end
