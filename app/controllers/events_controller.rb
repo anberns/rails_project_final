@@ -5,8 +5,20 @@ class EventsController < ApplicationController
     @event = Event.new
   end
 
+  def filter
+    if params[:filter_type] == "None"
+      @events = Event.sort
+    elsif params[:filter_type] == "Distance"
+      @events = Event.filter_by_distance(params[:filter_value])
+      puts @events
+    elsif params[:filter_type] == "Stroke"
+      @events = Event.filter_by_stroke(params[:filter_value])
+    end
+    render :index
+  end
+
   def index
-    @events= Event.all 
+    @events = Event.sort 
   end
 
   def create
