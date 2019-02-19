@@ -12,6 +12,14 @@ swimmers = Swimmer.create([{ name: "Diane Houston", email: "dh@gmail.com", passw
   { name: "Bobby Sue", email: "bs@gmail.com", password: "password", team_id: "2"},
   { name: "James Dean", email: "jd@gmail.com", password: "password", team_id: "2"},
   { name: "Walter Payton", email: "wp@gmail.com", password: "password", team_id: "3"},
+  { name: "Jimmy Lee", email: "jl@gmail.com", password: "password", team_id: "3"},
+  { name: "Alec Newell", email: "an@gmail.com", password: "password", team_id: "1"},
+  { name: "Max Unruh", email: "mu@gmail.com", password: "password", team_id: "1"},
+  { name: "Viswas Chitnis", email: "vc@gmail.com", password: "password", team_id: "2"},
+  { name: "Russell Lacy", email: "rl@gmail.com", password: "password", team_id: "2"},
+  { name: "Tony Frazier", email: "tf@gmail.com", password: "password", team_id: "3"},
+  { name: "Eugene Ford", email: "ef@gmail.com", password: "password", team_id: "3"},
+  { name: "Lilya Berns", email: "lb@gmail.com", password: "password", team_id: "3"},
 ])
 
 events = Event.create([{ name: "50 freestyle", distance: "50", stroke: "freestyle"},

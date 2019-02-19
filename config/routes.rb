@@ -2,7 +2,6 @@ Rails.application.routes.draw do
   root 'welcome#home'
   resources :events
   resources :swimmers
-  resources :coaches
   resources :teams
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
