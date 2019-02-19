@@ -8,7 +8,6 @@
   <input type="text" id="email" name="email"><br>
   <label>Password:</label><br>
   <input type="password" id="password" name="password"><br>
-  <%= select_tag(:user_type, options_for_select([['Coach', 'coach'], ['Swimmer', 'swimmer']])) %>
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
   <input type="submit" value="Log In">
 <% end %>
@@ -16,7 +15,4 @@
 <!-- <%= link_to('Log in with Facebook!', '/auth/facebook') %> -->
 
 <br><br>
-<h2>Sign Up</h2>
-<%= link_to "Coaches", new_coach_path %>
-<br>
-<%= link_to "Swimmers", new_swimmer_path %>
+<h2><%= link_to "Sign Up", new_swimmer_path %></h2>
