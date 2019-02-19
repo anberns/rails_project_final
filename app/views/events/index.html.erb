@@ -1,15 +1,28 @@
-<h2><%= link_to "Add New Event", new_event_path %></h2>
-<h3>Filter Events</h3>
+<h1>Events</h1><br>
 <%= form_tag "/events/filter", method: 'post' do %>
-  <%= select_tag "filter_type", options_for_select(["None", "Distance", "Stroke"]) %>
+  <%= select_tag "filter_type", options_for_select(["All Events", "By Distance", "By Stroke"]) %>
   <input type="text" name="filter_value"><br>
-  <input type="submit" value="Filter">
-<% end %>
+  <input class="normal_button" type="submit" value="Filter">
+<% end %><br><br>
   
+
 <% @events.each do |event| %>
-  <p><%= event.name %><p>
-  <%= link_to "Edit", edit_event_path(event.id) %>
-  <%= form_tag event_path(event.id), method: 'delete' do %>
-    <input class="button delete" type="submit" id="submit" value="Delete"><br>
-  <% end %>
+  <div class="event_card">
+    <p style="font-size: 1.3em"><%= event.name %></p>
+    <% if event.stroke == "freestyle" %>
+      <img src="https://i.imgur.com/vKE57Vm.jpg">
+    <% elsif event.stroke == "breaststroke" %>
+      <img src="https://i.imgur.com/JR51SU3.jpg">
+    <% elsif event.stroke == "backstroke" %>
+      <img src="https://i.imgur.com/VBbdzdP.jpg">
+    <% else %>
+      <img src="https://i.imgur.com/CKgE6Le.jpg">
+    <% end %>
+    <%= button_to "Edit", edit_event_path(event.id), class:"edit_button", method: "get" %>
+    <%= form_tag event_path(event.id), method: 'delete' do %>
+      <input class="delete_button" type="submit" id="submit" value="Delete"><br>
+    <% end %>
+  </div>
 <% end %>
+
+<%= button_to "Add New Event", new_event_path, class: "normal_button", method: 'get' %><br>

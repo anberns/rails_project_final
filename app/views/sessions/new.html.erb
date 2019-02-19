@@ -1,8 +1,9 @@
+<h1>Log In</h1><br>
 <%= form_tag login_path do %>
-  <label>Email:</label><br>
-  <input type="text" id="email" name="email"><br>
-  <label>Password:</label><br>
-  <input type="password" id="password" name="password"><br>
+  <%= label :name, "Email", class:"form_heading" %><br>
+  <input type="text" id="email" name="email"><br><br>
+  <%= label :name, "Password", class:"form_heading" %><br>
+  <input type="password" id="password" name="password"><br><br>
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
   <input type="submit" value="Log In">
 <% end %>
