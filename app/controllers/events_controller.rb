@@ -6,12 +6,12 @@ class EventsController < ApplicationController
   end
 
   def filter
-    if params[:filter_type] == "None"
+    if params[:filter_type] == "All Events"
       @events = Event.sort
-    elsif params[:filter_type] == "Distance"
+    elsif params[:filter_type] == "By Distance"
       @events = Event.filter_by_distance(params[:filter_value])
       puts @events
-    elsif params[:filter_type] == "Stroke"
+    elsif params[:filter_type] == "By Stroke"
       @events = Event.filter_by_stroke(params[:filter_value])
     end
     render :index
