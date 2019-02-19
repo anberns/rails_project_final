@@ -1,5 +1,5 @@
 <h2><%= link_to "Add New Event", new_event_path %></h2>
-<% @events.each do |event| %>
+<% Event.sort.each do |event| %>
   <p><%= event.name %><p>
   <%= link_to "Edit", edit_event_path(event.id) %>
   <%= form_tag event_path(event.id), method: 'delete' do %>
