@@ -8,10 +8,6 @@ class EventsController < ApplicationController
     @events= Event.all 
   end
 
-  def show
-    @event = Event.find(params[id])
-  end
-
   def create
     event = Event.new(event_params)
     if event.valid?
@@ -27,8 +23,17 @@ class EventsController < ApplicationController
   def update
     event = Event.find(params[:id])
     event.update(event_params)
-    redirect_to events_path
+    if event.valid?
+      redirect_to events_path
+    else
+      redirect_to edit_event_path(event.id)
+    end
   end 
+
+  def destroy
+    Event.find(params[:id]).destroy 
+    redirect_to events_path
+  end
 
   private
 
