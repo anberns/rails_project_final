@@ -1,8 +1,8 @@
 <h1>swimmer#show/id</h1>
 <%= @swimmer.name %><br>
 <%= @swimmer.team.name %><br>
-<%= link_to "View Team", team_path(@swimmer.team.id) %><br>
-<%= link_to "View All Teams", teams_path %><br>
+<%= link_to "My Team", team_path(@swimmer.team.id) %><br>
+<%= link_to "All Teams", teams_path %><br>
 <%= link_to "Update Information", edit_swimmer_path(@swimmer.id) %><br>
 <%= form_tag logout_path do %>
   <%= submit_tag "Log Out" %>

@@ -48,7 +48,9 @@ class SwimmersController < ApplicationController
         :name,
         :password,
         :email,
-        :team_id
+        :team_id,
+        event_ids:[],
+        events_attributes: [:name, :distance, :stroke]
       )
     end
 

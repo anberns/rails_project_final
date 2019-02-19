@@ -1,9 +1,9 @@
 class CreateSwimmerEvents < ActiveRecord::Migration[5.2]
   def change
     create_table :swimmer_events do |t|
-      t.integer :swimmer_id
-      t.integer :event_id
-      t.time :best_time
+      t.belongs_to :swimmer, index: true, foreign_key: true
+      t.belongs_to :event, index: true, foreign_key: true
+      
     end
   end
 end
