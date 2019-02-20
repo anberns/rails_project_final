@@ -1,5 +1,9 @@
-<% @teams.each do |team| %>
-  <h1><%= team.name %> - <%= team.hq %></h1>
-  <%= link_to "Team Page", team_path(team.id) %>
-  <br>
-<% end %>
+<h1>Teams</h1><br>
+  <% @teams.each do |team| %>
+    <% if team.id != 4 %>
+      <div class="team_card">
+        <p style="font-size: 1.3em"><%= team.name %></p>
+        <img src=<%= team.image_url %><br> 
+      </div>
+    <% end %>
+  <% end %>

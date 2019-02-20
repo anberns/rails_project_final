@@ -1,8 +1,6 @@
 <h1><%= @swimmer.name %></h1><br>
 <h3>Team <%= @swimmer.team.name %></h3>
-<% @swimmer.team.swimmers.each do |swimmer| %>
-  <p><%= swimmer.name %> - <%= swimmer.email %></p>
-<% end %>
+<%= link_to "Team Page", team_path(@swimmer.team.id) %>
 <br>
 <h3>My Events</h3>
 <% @swimmer.get_events_and_times.each do |event|%>
