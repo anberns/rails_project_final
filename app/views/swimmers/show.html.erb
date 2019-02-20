@@ -6,11 +6,11 @@
 <br>
 <h3>My Events</h3>
 <% @swimmer.get_events_and_times.each do |event|%>
-  <p><%= event[:name] %> - <%= event[:time]%></p><br>
+  <h5><%= event[:name] %> - <%= event[:time]%></h5>
   <form action="/swimmer_events/<%= event[:id] %>" method='post'>
     <input type="text" name="personal_record">
     <input type="hidden" name="_method" value="patch">
     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
     <input type="submit" class="normal_button" value="Update Time">
-  </form>
+  </form><br><br>
 <% end %>
