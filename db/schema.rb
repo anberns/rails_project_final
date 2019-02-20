@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 2019_02_18_153900) do
   create_table "swimmer_events", force: :cascade do |t|
     t.integer "swimmer_id"
     t.integer "event_id"
+    t.string "personal_record"
     t.index ["event_id"], name: "index_swimmer_events_on_event_id"
     t.index ["swimmer_id"], name: "index_swimmer_events_on_swimmer_id"
   end

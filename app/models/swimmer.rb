@@ -26,12 +26,27 @@ class Swimmer < ApplicationRecord
     oauth_email = auth["info"]["email"] 
     @swimmer = self.find_by(email: oauth_email)
     if !@swimmer 
-      @swimmer = self.new(name: oauth_name, email: oauth_email, password: "password", team_id: "1")
+      @swimmer = self.new(name: oauth_name, email: oauth_email, password: "password", team_id: "4")
       if @swimmer.valid?
         @swimmer.save
       end
     end
     @swimmer
+  end
+
+  def get_events_and_times
+    data = []
+    self.swimmer_events.each do |swimmer_event|
+      event_name = Event.find(swimmer_event.event_id).name
+      data_hash = {
+        :name => event_name,
+        :time => swimmer_event.personal_record,
+        :id => swimmer_event.id
+      }
+      data << data_hash
+    end
+    puts data
+    data
   end
 
 end

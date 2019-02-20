@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-teams = Team.create([{ name: "Dolphins", hq: "Brooklyn"}, { name: "Sharks", hq: "Queens"}, { name: "Sailfish", hq: "Manhattan"}])
+teams = Team.create([{ name: "Dolphins", hq: "Brooklyn"}, { name: "Sharks", hq: "Queens"}, { name: "Sailfish", hq: "Manhattan"}, { name: "Unaffilliated", hq: "None"}])
 swimmers = Swimmer.create([{ name: "Diane Houston", email: "dh@gmail.com", password: "password", team_id: "1"},
   { name: "Billy Bob", email: "bb@gmail.com", password: "password", team_id: "1"},
   { name: "Bobby Sue", email: "bs@gmail.com", password: "password", team_id: "2"},

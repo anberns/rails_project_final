@@ -3,6 +3,7 @@ class CreateSwimmerEvents < ActiveRecord::Migration[5.2]
     create_table :swimmer_events do |t|
       t.belongs_to :swimmer, index: true, foreign_key: true
       t.belongs_to :event, index: true, foreign_key: true
+      t.string :personal_record
       
     end
   end
