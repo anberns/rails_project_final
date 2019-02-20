@@ -1,8 +1,5 @@
 <% @teams.each do |team| %>
   <h1><%= team.name %> - <%= team.hq %></h1>
-  <h3>Swimmers</h3>
-  <% team.swimmers.each do |swimmer| %>
-    <p><%= swimmer.name %></p>
-  <% end %>
+  <%= link_to "Team Page", team_path(team.id) %>
   <br>
 <% end %>

@@ -3,7 +3,6 @@ class Swimmer < ApplicationRecord
 
   validates :name, presence: true 
   validates :email, presence: true, uniqueness: true
-  validates :password, presence: true
 
   belongs_to :team
   has_many :swimmer_events
