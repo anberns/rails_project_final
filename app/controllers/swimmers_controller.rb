@@ -2,6 +2,14 @@ class SwimmersController < ApplicationController
   before_action :require_login
   skip_before_action :require_login, only: [:new, :create]
 
+  def index
+    if params[:team_id]
+      @swimmers = Team.find(params[:team_id]).swimmers 
+    else
+      @swimmers = Swimmer.all 
+    end
+  end
+
   def new
     if session[:user_id]
       redirect_to swimmer_path(session[:user_id])

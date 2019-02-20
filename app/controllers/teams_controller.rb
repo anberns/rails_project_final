@@ -7,9 +7,9 @@ class TeamsController < ApplicationController
 
   def show
     @team = Team.find(params[:id])
-    if !authorized?(@team)
-      return head(:forbidden)
-    end
+    #if !authorized?(@team)
+    #  return head(:forbidden)
+    #end
   end
 
   def edit
