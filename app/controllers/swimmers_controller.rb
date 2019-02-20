@@ -11,21 +11,27 @@ class SwimmersController < ApplicationController
   end
 
   def new
-    if session[:user_id]
+    if session[:user_id] && !params[:team_id]
       redirect_to swimmer_path(session[:user_id])
     end
     @swimmer = Swimmer.new 
+    @team_id = params[:team_id]
   end
 
   def create 
     @swimmer = Swimmer.new(swimmer_params)
     if @swimmer.valid?
       @swimmer.save
+    else
+      render :new
+    end
+
+    if params[:swimmer][:team_id] == "4"
       session[:user_id] = @swimmer.id
       session[:user_type] = "swimmer"
       redirect_to swimmer_path(@swimmer.id)
-    else
-      render :new
+    else 
+      redirect_to team_path(params[:swimmer][:team_id])
     end
   end
 
@@ -74,7 +80,4 @@ class SwimmersController < ApplicationController
       id == session[:user_id]
     end
 
-    def require_login 
-      return head(:forbidden) unless session.include? :user_id 
-    end
 end

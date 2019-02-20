@@ -2,7 +2,7 @@
   <% @teams.each do |team| %>
     <% if team.id != 4 %>
       <div class="team_card">
-        <p style="font-size: 1.3em"><%= team.name %></p>
+        <h4><%= team.name %></h4>
         <%= link_to image_tag(team.image_url), team_path(team.id) %><br> 
       </div>
     <% end %>

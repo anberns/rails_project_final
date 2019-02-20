@@ -1,6 +1,8 @@
 <h1><%= @swimmer.name %></h1><br>
 <h3>Team <%= @swimmer.team.name %></h3>
-<%= link_to "Team Page", team_path(@swimmer.team.id) %>
+<% if @swimmer.team_id != 4 %>
+	<%= button_to "Team Page", team_path(@swimmer.team_id), class: "normal_button", method: 'get' %>
+<% end %>
 <br>
 <h3>My Events</h3>
 <% @swimmer.get_events_and_times.each do |event|%>

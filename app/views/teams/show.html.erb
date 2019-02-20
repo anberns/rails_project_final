@@ -1,6 +1,10 @@
 <h1><%= @team.name %></h1>
 <h2><%= @team.hq %></h2><br>
 
-<%= link_to "Roster", team_swimmers_path(@team.id) %>
-
-
+<div class="team_card_full">
+  <img src=<%= @team.image_url %>>
+</div>
+<%= button_to "Roster", team_swimmers_path(@team.id), class: "normal_button", method: 'get' %>
+<% if current_swimmer.team_id == @team.id %>
+  <%= button_to "Add Swimmer to Team", new_team_swimmer_path(@team.id), class: "normal_button", method: 'get' %>
+<% end %>

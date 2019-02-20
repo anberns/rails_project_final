@@ -15,5 +15,44 @@
   </div>
 <% end %>
 
-<%= render 'form' %>
+<%= form_for @swimmer do |f| %>
+
+  <!-- swimmer info -->
+  <%= f.label :name, "Name", class:"form_heading" %><br>
+  <%= f.text_field :name %><br>
+
+  <%= f.label :name, "Email", class:"form_heading" %><br>
+  <%= f.text_field :email %><br>
+
+  <%= f.label :name, "Password", class:"form_heading" %><br>
+  <%= f.password_field :password %><br><br>
+  
+  <!-- choose a team  
+  <%= f.label :name, "Team", class:"form_heading"  %><br>
+  <%= f.collection_select :team_id, Team.all, :id, :name %><br><br>
+  -->
+  <% if @team_id %>
+    <%= f.hidden_field :team_id, value: @team_id %>
+  <% else %>
+    <%= f.hidden_field :team_id, value: "4" %>
+  <% end %>
+
+  <!-- choose events -->
+  <%= f.label :name, "Events", class:"form_heading"  %>
+  <%= f.collection_check_boxes(:event_ids, Event.sort, :id, :name) do |b| %><br>
+    <%= b.label(class:"checkbox") { b.check_box + b.text } %>
+  <% end %><br><br>
+  <%= f.label :name, "New Event (Optional)", class:"form_heading"  %><br>
+  <%= f.fields_for :events, @swimmer.events.build do |events_fields| %>
+    <label>Name</label><br>
+    <%= events_fields.text_field :name %><br>
+    <label>Distance</label><br>
+    <%= events_fields.text_field :distance %><br>
+    <label>Stroke</label><br>
+    <%= events_fields.text_field :stroke %><br>
+  <% end %><br>
+
+
+  <%= f.submit value="Submit", class:"normal_button" %>
+<% end %>
 

@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :events
   resources :swimmers
   resources :teams do
-    resources :swimmers, only: [:index]
+    resources :swimmers, only: [:index, :new, :create]
   end
 
   get '/login' => 'sessions#new'
