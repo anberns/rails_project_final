@@ -20,6 +20,7 @@ class Swimmer < ApplicationRecord
     end
   end
 
+  # help from https://medium.com/@kaileegray/adding-omniauth-to-rails-web-app-2491392787fa
   def self.find_or_create_by_omniauth(auth)
     oauth_name = auth["info"]["name"]
     oauth_email = auth["info"]["email"] 

@@ -41,7 +41,12 @@ class SwimmersController < ApplicationController
       return head(:forbidden) 
     end
     @swimmer.update(swimmer_params)
-    redirect_to swimmer_path(@swimmer.id)
+    if @swimmer.valid?
+      redirect_to swimmer_path(@swimmer.id)
+    else
+      puts "invalid"
+      render :edit
+    end
   end
 
   private
