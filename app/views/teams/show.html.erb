@@ -1,12 +1,6 @@
 <h1><%= @team.name %></h1>
 <h2><%= @team.hq %></h2><br>
 
-<br>
-<h3>Swimmers</h3>
-<% @team.swimmers.each do |swimmer| %>
-  <p><%= swimmer.name %> - <%= swimmer.email %></p>
-<% end %>
-<br>
-<% if session[:user_type] == "coach" %>
-  <%= link_to "Edit Team", edit_team_path(@team.id) %>
-<% end %>
+<%= link_to "Roster", team_swimmers_path(@team.id) %>
+
+

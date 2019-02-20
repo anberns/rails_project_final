@@ -2,7 +2,10 @@ Rails.application.routes.draw do
   root 'welcome#home'
   resources :events
   resources :swimmers
-  resources :teams
+  resources :teams do
+    resources :swimmers, only: [:index]
+  end
+
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   post '/logout' => 'sessions#destroy'
