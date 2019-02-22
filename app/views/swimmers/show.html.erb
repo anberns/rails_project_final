@@ -5,12 +5,12 @@
 <% end %>
 <br>
 <h3>My Events</h3>
-<% @swimmer.get_events_and_times.each do |event|%>
-  <h5><%= event[:name] %> - <%= event[:time]%></h5>
-  <form action="/swimmer_events/<%= event[:id] %>" method='post'>
-    <input type="text" name="personal_record">
-    <input type="hidden" name="_method" value="patch">
-    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-    <input type="submit" class="normal_button" value="Update Time">
-  </form><br><br>
+
+<!-- example of utilizing rails relationships -->
+<% @swimmer.swimmer_events.each do |swim_event|%>
+  <h5><%= swim_event.event.name %> - <%= swim_event.personal_record %></h5>
+  <%= form_for swim_event do |f| %>
+    <%= f.text_field :personal_record %>
+    <%= f.submit value="Update Time", class:"normal_button" %><br><br><br>
+  <% end %>
 <% end %>

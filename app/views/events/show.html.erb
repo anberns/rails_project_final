@@ -1,0 +1,14 @@
+# event, all swimmers that compete, if time, display
+
+#group by swimmer + time
+<h1><%= @event.name %></h1>
+
+# call method from event model to pass data
+<ul>
+<% @event.swimmer_events.each do |swimmer_event| %>
+  <li><%= swimmer_event.swimmer.name %></li>
+  <% if swimmer_event.personal_record %>
+  <li><%= swimmer_event.personal_record %></li>
+  <% end %>
+<% end %>
+  

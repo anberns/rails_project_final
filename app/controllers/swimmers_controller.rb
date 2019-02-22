@@ -22,17 +22,18 @@ class SwimmersController < ApplicationController
     @swimmer = Swimmer.new(swimmer_params)
     if @swimmer.valid?
       @swimmer.save
+      # address render issue
+      if params[:swimmer][:team_id] == "4"
+        session[:user_id] = @swimmer.id
+        session[:user_type] = "swimmer"
+        redirect_to swimmer_path(@swimmer.id)
+      else 
+        redirect_to team_path(params[:swimmer][:team_id])
+      end
     else
       render :new
     end
 
-    if params[:swimmer][:team_id] == "4"
-      session[:user_id] = @swimmer.id
-      session[:user_type] = "swimmer"
-      redirect_to swimmer_path(@swimmer.id)
-    else 
-      redirect_to team_path(params[:swimmer][:team_id])
-    end
   end
 
   def show

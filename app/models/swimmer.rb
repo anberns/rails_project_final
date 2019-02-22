@@ -7,10 +7,10 @@ class Swimmer < ApplicationRecord
   belongs_to :team
   has_many :swimmer_events
   has_many :events, through: :swimmer_events, dependent: :destroy
+  # can remove
   accepts_nested_attributes_for :events
 
   def events_attributes=(events_attributes)
-    puts events_attributes
     events_attributes.values.each do |event_attribute|
       if event_attribute[:name] != "" || event_attribute[:distance] != "" || event_attribute[:stroke] != ""
         event = Event.find_or_create_by(event_attribute)
@@ -33,6 +33,7 @@ class Swimmer < ApplicationRecord
     @swimmer
   end
 
+  # not needed, relationship already exists
   def get_events_and_times
     data = []
     self.swimmer_events.each do |swimmer_event|
@@ -44,7 +45,6 @@ class Swimmer < ApplicationRecord
       }
       data << data_hash
     end
-    puts data
     data
   end
 
